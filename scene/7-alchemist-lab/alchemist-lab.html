@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Storeroom</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" />
+    <script type="text/javascript" src="../../js/resize_image_map.js?version=1"></script>
+    <script type="text/javascript" src="../../js/background.js?version=1"></script>
+    <script type="text/javascript" src="../../js/layer_loaded.js?version=1"></script>
+    <script type="text/javascript" src="../../js/inventory.js?version=1"></script>
+  </head>
+  <body>
+    <!-- background layers -->
+    <div id="layers" style="opacity: 0;">
+        <img id="bg1" class="background" src="background.jpg" onload="SC.layerLoaded()">
+        <img id="bg2" class="background flicker" src="flicker.png" onload="SC.layerLoaded()" usemap="#map" ondragstart="return false;">
+    </div>
+
+    <!-- clickable maps -->
+    <map id="map" name="map">
+        <area shape="poly" coords="0,800,1024,800,1024,1024,0,1024"
+            href="../3-hallway/hallway.html" title="Back to hallway">
+    </map>
+
+    <!-- dialog -->
+    <dialog class="bottom" open>
+Alchemist frowns as you hand over the book: "What took you so long? I sent you for the book of spells ages ago! 
+We don't have time to dawdle."
+<br>
+<center>
+<b>The end.</b>
+</center>
+    </dialog>
+
+  </body>
+</html>
+
+
+
+
