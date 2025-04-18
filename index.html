@@ -7,24 +7,64 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <style>
-    body {
-        background-color: black;
-        color: white;
-        margin: 0;
-    }
-    iframe {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-    </style>
+    <link rel="shortcut icon" href="image/icon.png?version=4" type="image/png" />
+    <!-- css -->
+    <link rel="stylesheet" href="css/main.css?version=4" type="text/css" />
+    <link rel="stylesheet" href="css/dialog.css?version=4" type="text/css" />
+    <link rel="stylesheet" href="css/layers.css?version=4" type="text/css" />
+    <link rel="stylesheet" href="css/animation_flicker.css?version=4" type="text/css" />
+    <link rel="stylesheet" href="css/animation_glint.css?version=4" type="text/css" />
+    <!-- js -->
+    <script type="text/javascript" src="js/storage.js?version=4"></script>
+    <script>SC.storage.prefix = 'PACA.';</script>
+    <script type="text/javascript" src="js/global.js?version=4"></script>
+    <script type="text/javascript" src="js/resize_image_map.js?version=4"></script>
+    <script type="text/javascript" src="js/djb2.js?version=4"></script>
+    <script type="text/javascript" src="js/unseen.js?version=4"></script>
+    <script type="text/javascript" src="js/inventory.js?version=4"></script>
+    <script type="text/javascript" src="js/rooms.js?version=4"></script>
+    <script type="text/javascript" src="js/boolean_expression.js?version=4"></script -->
+    <script type="text/javascript" src="js/elements_with_id.js?version=4"></script>
+    <script type="text/javascript" src="js/assert_object_attributes.js?version=4"></script>
+    <script type="text/javascript" src="js/purge.js?version=4"></script>
+    <script type="text/javascript" src="js/play_test.js?version=4"></script>
+    <script type="text/javascript" src="js/render_room.js?version=4"></script>
+    <script type="text/javascript" src="js/resize.js?version=4"></script>
+    <script type="text/javascript" src="js/index.js?version=4"></script>
+    <script type="text/javascript" src="js/global_check.js?version=4"></script>
   </head>
   <body>
-    <iframe src="scene/1-storeroom/storeroom.html"></iframe>
+    <!-- background layers -->
+    <div id="layers" style="opacity: 1;">
+        <div id="layers_bottom"></div>
+        <img id="layers_top"
+             class="background"
+             src="image/bg_top.png"
+             usemap="#map"
+             ondragstart="return false;">
+        <div id="layers_wait"
+             class="background layer"
+             style="display: none; cursor: wait;"><span id="layers_wait_hourglass">⏳</span></div>
+    </div>
+
+    <!-- clickable maps -->
+    <map id="map" name="map"></map>
+
+    <!-- dialog -->
+    <dialog id="dialog" class="bottom flex" open>
+        <div id="dialog_message"></div>
+        <div id="dialog_bottom"></div>
+    </dialog>
+
+    <!-- sounds -->
+    <!-- audio id="door" src="sound/door.mp3" preload></audio -->
+
+    <div id="debug" style="display: none; position: fixed; top: 0; left: 0; color: lime;">
+        <button onclick="SC.purge()">SC.purge()</button>
+        <button onclick="SC.quest1()">SC.quest1</button>
+        Inventory: <span id="inventory"></span>
+    </div>
+
   </body>
 </html>
 

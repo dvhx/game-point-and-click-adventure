@@ -1,68 +1,68 @@
-// Inventory
-// linter: ngspicejs-lint
-// global: window, document, console, localStorage
+// Inventory (only booleans not counts)
+// linter: ngspicejs-lint --browser
 "use strict";
 
 var SC = window.SC || {};
 
 SC.inventory = (function () {
     // Inventory
-    var self = {},
-        dialog,
-        data = JSON.parse(localStorage.hasOwnProperty("SC.inventory.data") ? localStorage.getItem("SC.inventory.data") : "{}");
-    self.data = data;
+    var self = {};
+    self.data = SC.storage.readObject('SC.inventory.data', {});
 
     function save() {
         // Save inventory to local storage
-        localStorage.setItem('SC.inventory.data', JSON.stringify(data));
+        SC.storage.writeObject('SC.inventory.data', self.data);
     }
+
+    self.keys = function (aIgnore) {
+        // Return comma separated keys sorted alphabetically, used in room rendering, with optional exclusions
+        aIgnore = aIgnore || [];
+        return Object.keys(self.data).filter((s) => !aIgnore.includes(s)).sort().join(',');
+    };
+
+    self.removeAll = function () {
+        // Remove all items from inventory
+        self.data = {};
+        save();
+    };
 
     self.has = function (aItem) {
         // Return true if inventory contains item
-        return data[aItem] ? true : false;
+        if (Array.isArray(aItem)) {
+            if (aItem.length <= 0) {
+                return true;
+            }
+            for (var i = 0; i < aItem.length; i++) {
+                if (!self.data[aItem[i]]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return self.data[aItem] ? true : false;
     };
 
     self.add = function (aItem) {
         // Add one item to inventory
-        data[aItem] = data[aItem] || 0;
-        data[aItem]++;
+        //throw "add " + aItem;
+        self.data[aItem] = true;
         save();
-        return data[aItem];
-    };
-
-    self.set = function (aItem, aCount) {
-        // Set how many items user have
-        data[aItem] = aCount || 0;
-        save();
-        return data[aItem];
     };
 
     self.remove = function (aItem) {
         // Remove one item from inventory
-        if (self.has(aItem)) {
-            data[aItem]--;
-            if (data[aItem] <= 0) {
-                delete data[aItem];
-            }
-            save();
-        }
-        return data[aItem];
+        //throw "remove " + aItem;
+        delete self.data[aItem];
+        save();
     };
 
-    self.require = function (aItem, aMessage) {
-        // If doesn't have aItem, show dialog aMessage and return false
-        if (!self.has(aItem)) {
-            dialog = dialog || document.createElement('dialog');
-            dialog.className = "bottom";
-            dialog.textContent = aMessage;
-            dialog.style.color = 'red';
-            document.body.appendChild(dialog);
-            dialog.show();
-            // autohide after 10s
-            window.setTimeout(function () { if (dialog.parentElement) { dialog.parentElement.removeChild(dialog); } }, 30000);
-            return false;
-        }
-    };
+    window.addEventListener('DOMContentLoaded', function () {
+        var span = document.getElementById('inventory');
+        window.setInterval(function () {
+            span.textContent = Object.keys(self.data).sort().join(', ');
+        }, 300);
+    });
 
     return self;
 }());
+

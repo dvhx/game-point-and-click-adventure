@@ -1,0 +1,49 @@
+/* dialog at the bottom of the screen */
+
+dialog.bottom {
+    width: 800px;
+    height: 200px;
+    max-width: 100vw;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 1ex black;
+    background-image: url(../image/dialog.webp);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    font-size: large;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+dialog:open {
+    display: flex;
+}
+#dialog_message.unseen {
+    color: yellow;
+}
+dialog .back {
+    color: skyblue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#dialog_bottom {
+    position: absolute;
+    bottom: 1ex;
+}
+#dialog_require.bottom {
+    background-image: url(../image/require.jpg);
+    color: pink;
+}
+
+@media (max-width: 600px) {
+    dialog.bottom {
+        font-size: small;
+    }
+}
+

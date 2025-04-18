@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: cardo;
-    src: url('../font/cardo.regular.ttf') format('truetype');
+    src: url('../font/Cardo-Regular-min.woff2') format('woff2');
 }
 body {
     font-family: cardo;
@@ -17,57 +17,11 @@ body {
     margin: 0;
 }
 
-/* background layers stacked atop each other */
-
-.background {
-    position: fixed;
+map area {
+    cursor: pointer;
 }
-
-/* dialog at the bottom of the screen */
-
-dialog.bottom {
-    width: 800px;
-    height: 200px;
-    max-width: 100vw;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 1ex black;
-    background-image: url(../image/dialog.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    box-sizing: border-box;
-    padding: 40px;
-    background-color: black;
-    color: white;
-    bottom: 0;
-    font-size: large;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (max-width: 600px) {
-    dialog.bottom {
-        font-size: small;
-    }
-}
-
-/* flickering light animation */
-
-@keyframes flicker {
-    0%, 100% { opacity: 1; }
-    10% { opacity: 0.15; }
-    20% { opacity: 0.9; }
-    30% { opacity: 0.8; }
-    40% { opacity: 0.15; }
-    50% { opacity: 0.2; }
-    60% { opacity: 0.94; }
-    70% { opacity: 0.5; }
-    80% { opacity: 0.6; }
-    90% { opacity: 0.8; }
-}
-.flicker {
-    animation: flicker 0.8s infinite;
+map area.enabled {
+    cursor: pointer;
+    pointer-events: all;
 }
 

@@ -1,11 +1,11 @@
-// Resize image map if image is not displayed at original scale
-// linter: ngspicejs-lint
-// global: document, window, console
+// Resize image map areas if image is not displayed at original scale
+// linter: ngspicejs-lint --browser
 "use strict";
 
 var SC = window.SC || {};
 
 SC.resizeImageMap = function (aImage) {
+    // Resize image map areas if image is not displayed at original scale
     // after image is loaded or when window is resized, we must scale map coordinates to fit screen
     //console.log('scaleImageMap', aImage.width, aImage.height, aImage.naturalWidth, aImage.naturalHeight, aImage.useMap);
     aImage = typeof aImage === 'string' ? document.getElementById(aImage) : aImage;
@@ -16,14 +16,13 @@ SC.resizeImageMap = function (aImage) {
         console.warn('Image have no usemap');
         return;
     }
-    var map = document.querySelector(aImage.useMap),
-        i,
-        c,
-        a = map.getElementsByTagName('area'),
-        coords,
-        orig,
-        kx = aImage.width / aImage.naturalWidth,
-        ky = aImage.height / aImage.naturalHeight;
+    var map = document.querySelector(aImage.useMap), i, c, a, coords, orig, kx, ky;
+    if (!map) {
+        return;
+    }
+    a = map.getElementsByTagName('area');
+    kx = aImage.width / aImage.naturalWidth;
+    ky = aImage.height / aImage.naturalHeight;
 
     //console.log('image', aImage);
     //console.log('map', map);

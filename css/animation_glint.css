@@ -1,0 +1,23 @@
+/* glint to show important items */
+
+@keyframes glint {
+    0%, 100% { opacity: 0; }
+    10% { opacity: 0.0; }
+    20% { opacity: 0.0; }
+    30% { opacity: 0.0; }
+    40% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+    60% { opacity: 0.5; }
+    70% { opacity: 0.9; }
+    80% { opacity: 0.8; }
+    90% { opacity: 0.5; }
+}
+.glint1 {
+    animation: glint 2s infinite;
+}
+.glint2 {
+    animation: glint 2s infinite;
+    animation-delay: 0.5s;
+}
+
+

@@ -1,7 +1,7 @@
 # game-point-and-click-adventure
 Exploring the possibilities of AI generated images and text in simple point-and-click adventure web game
 
-[<img src="scene/1-storeroom/background.jpg">](https://dvhx.github.io/game-point-and-click-adventure/)
+[<img src="room/storeroom/background.jpg">](https://dvhx.github.io/game-point-and-click-adventure/index.html#intro)
 
 (click on the image to play online)
 
