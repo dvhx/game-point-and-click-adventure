@@ -325,3 +325,14 @@ Well, it took me 32 attempts in span of 3 weeks to find the one I was finally ha
 - like v31 but minor change that all coords moved to one object and use it's names (keys), 
   e.g. "book_shelf" when referencing polygon instead of copy-pasting polygon coordinates for each item
 - In v32 everything was possible to do and it was relatively simple so no new versions were made
+
+# Conclusion
+
+For years I was recommending point-and-click as newbie friendly type of game to make. I no longer recommend it.
+If you want anything more than one-way flow with 2-3 different endings, this genre has surprising amount 
+of complexity and special cases. Very often with each new interaction you will find that your current code
+is either incapable of doing it or it require ridiculous amount of typing in million places. If you don't believe
+try making your own point-and-click game with free movements and with returning things where you picked them.
+
+
+
