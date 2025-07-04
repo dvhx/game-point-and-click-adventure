@@ -50,9 +50,13 @@ SC.inventory = (function () {
     };
 
     self.remove = function (aItem) {
-        // Remove one item from inventory
+        // Remove one item from inventory, * removes all
         //throw "remove " + aItem;
-        delete self.data[aItem];
+        if (aItem === '*') {
+            self.removeAll();
+        } else {
+            delete self.data[aItem];
+        }
         save();
     };
 
